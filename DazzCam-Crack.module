@@ -1,7 +1,7 @@
 [General]
-name = DazzCam-Crack
-author = YourName
-updated = 03-07-2025
+name = DazzCam-AllInOne
+author = AA
+updated = 05-07-2025
 
 [Proxy]
 DOMAIN-SUFFIX,cdn.dazzcam.com,DIRECT
@@ -14,7 +14,20 @@ DOMAIN,ads.dazzcam.com,REJECT
 hostname = api.dazzcam.com, billing.dazzcam.com
 
 [URL-Rewrite]
-^https?:\/\/api\.dazzcam\.com\/v1\/user\/subscription → https://raw.githubusercontent.com/you/repo/main/DazzCrack.js 200
+# Tại đây chúng ta sử dụng inline script thay cho URL đến DazzCrack.js
+^https?:\/\/api\.dazzcam\.com\/v1\/user\/subscription  {
+  action = "script-response-body";
+  script = {
+    const response = {
+      success: true,
+      data: {
+        plan: "pro",
+        expires_at: "2099-12-31T23:59:59Z",
+        features: ["all_filters", "hd_export", "watermark_free"]
+      }
+    };
+    $done({ body: JSON.stringify(response) });
+  };
+} 200
 
 [Script-Paths]
-https://raw.githubusercontent.com/you/repo/main/DazzCrack.js
