@@ -1,0 +1,20 @@
+[General]
+name = DazzCam-Crack
+author = YourName
+updated = 03-07-2025
+
+[Proxy]
+DOMAIN-SUFFIX,cdn.dazzcam.com,DIRECT
+DOMAIN-SUFFIX,billing.dazzcam.com,PROXY
+
+[Rule]
+DOMAIN,ads.dazzcam.com,REJECT
+
+[MITM]
+hostname = api.dazzcam.com, billing.dazzcam.com
+
+[URL-Rewrite]
+^https?:\/\/api\.dazzcam\.com\/v1\/user\/subscription → https://raw.githubusercontent.com/you/repo/main/DazzCrack.js 200
+
+[Script-Paths]
+https://raw.githubusercontent.com/you/repo/main/DazzCrack.js
